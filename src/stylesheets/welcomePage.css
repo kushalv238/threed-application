@@ -1,0 +1,139 @@
+.images {
+    width: 100%;
+    height: 60%;
+
+    padding: 2rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 15px solid dodgerblue;
+}
+
+.img {
+    width: 90%;
+
+    height: 45%;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden !important;
+}
+
+img {
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.img:hover img {
+    transform: scale(110%);
+}
+
+.loginSignup {
+    height: 40%;
+    width: 100%;
+
+    border-top: 15px solid dodgerblue;
+
+    display: grid;
+    place-items: center;
+
+    padding: 3rem 0;
+}
+
+.btn {
+    background-color: rgb(228, 51, 81);
+    
+    border: none;
+    border-radius: 5px;
+    
+    padding: 0.5rem 2rem;
+    
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+
+    border: 2px solid rgb(228, 51, 81);
+    
+    cursor: pointer;
+}
+
+.ls-btn {
+    padding: 0.5rem 8rem;
+}
+
+.btn:hover {
+    background-color: black;
+    border: 2px solid white;
+}
+
+.css-ohwg9z {
+    width: 90%;
+    height: 120% !important;
+}
+
+.css-1f8sh1y {
+    height: 70% !important;
+}
+
+.css-1m9128y {
+    height: 20%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.info {
+    margin: 5px 0;
+    background-color: rgba(0, 0, 0, 0.966);
+    height: 100% !important;
+}
+
+.input-box {
+    /* margin: 0.5rem auto; */
+    display: flex;
+}
+
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    color: white;
+    font-weight: 500;
+
+    border-bottom: 1px solid white;
+
+    margin: 0 8px;
+}
+
+.css-1l7c0cy div div {
+    height: 100%;
+}
+
+#eye {
+    cursor: pointer;
+}
+
+.css-ktslay-MuiButtonBase-root-MuiIconButton-root {
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+.css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover {
+    background-color: rgb(136, 136, 136) !important;
+}
+
+@media only screen and (max-width: 380px) {
+    .css-1m9128y {
+        margin-top: 1.3rem !important;
+    }
+}

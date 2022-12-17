@@ -1,0 +1,123 @@
+.home-img {
+    height: auto;
+    border: none;
+}
+
+.home-img > div {
+    height: 80%;
+}
+
+.text-to-speech {
+    display: grid;
+    place-items: center;
+    height: 50%;
+    min-width: 30rem;
+}
+
+.text {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.transcript {
+    width: 80%;
+    
+    border: 1px solid blue;
+
+    border-radius: 2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: dodgerblue;
+
+}
+
+.transcript-text {
+    color: black;
+    min-height: 2.5rem;
+    
+    font-weight: 600;
+    font-size: 1rem;
+
+    text-align: center;
+    
+    width: 85%;
+    
+    overflow: auto;
+    padding: 0 0.8rem;
+    
+    cursor: auto;
+
+    background-color: white;
+
+    margin: 0;
+
+    border-bottom-right-radius: 1.5rem;
+}
+
+.transcript-text::placeholder {
+    font-weight: 500;
+}
+
+.send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 15%;
+    min-height: 2.5rem;
+    
+    cursor: pointer;
+    
+    background-color: dodgerblue;
+    color: white;
+}
+
+.reset-button {
+    color: rgba(0, 0, 0, 0.479);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+.reset-button:hover {
+    color: black;
+}
+
+.mic-icon {
+    cursor: pointer;
+    font-size: 5rem;
+    
+    /* TODO: backgroundGradient not working in mic icon */
+
+    /* background-color: aquamarine;
+    background-clip: text;
+    -webkit-background-clip: text; */
+}
+
+.mic-off:hover {
+    color: black;
+}
+
+.mic-off {
+    color: rgb(100, 100, 100);
+}
+
+.mic-on {
+    color: rgb(250, 100, 100);
+}
+
+@media only screen and (max-width: 420px) {
+    .text-to-speech {
+        height: 40%;
+        min-width: 90%;
+    }
+    .transcript {
+        width: 90%;
+    }
+}

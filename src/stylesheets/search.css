@@ -1,0 +1,47 @@
+.search {
+    min-width: 25rem;
+    max-width: 100%;
+
+    display: flex;
+
+    align-self: flex-start;
+
+    padding: 0.5rem 0;
+    margin: 1rem;
+    
+    border-radius: 3rem;
+    background: #1f2123;
+
+    overflow: hidden;
+}
+
+#search-bar {
+    width: 80%;
+
+    border: none;
+    font-size: 1rem;
+
+    outline: none;
+
+    margin: 0 1.5rem;
+
+    border-bottom: 1px solid white;
+    
+}
+
+.search input::placeholder {
+    color: #a1a1a1;
+}
+
+.search-icon {
+    width: 20%;
+    height: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+@media only screen and (max-width: 420px) {
+    .search {
+        min-width: 80%;
+    }
+}
