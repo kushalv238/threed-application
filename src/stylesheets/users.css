@@ -1,0 +1,31 @@
+.usersPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3rem auto;
+    height: 80%;
+
+    color: var(--clr-quinary);
+}
+
+.logoutButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.overlay {
+    opacity: 40%;
+}
+
+.userInfo {
+    width: 90%;
+    display: block;
+}
+
+.userInformation {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--clr-quinary);
+}

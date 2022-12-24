@@ -1,0 +1,66 @@
+.featuresPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3rem auto;
+    height: 80%;
+}
+
+.overlay {
+    opacity: 40%;
+}
+
+
+.featuresPageList {
+    height: 100% !important;
+}
+
+.features {
+    height: 50%;
+    width: 100%;
+
+    color: var(--clr-quinary);
+}
+
+.features > p {
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-size: 1.3rem;
+}
+
+.featuresList {
+    height: 92%;
+    overflow-y: scroll;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+
+    height: 3rem;
+
+    cursor: pointer;
+
+    border-radius: 0;
+}
+
+.card:hover {
+    background-color: var(--clr-quinary);
+    color: var(--clr-quaternary);
+}
+
+.card > p {
+    font-size: 1.4rem; 
+}
+
+.card > svg {
+    margin: 0 2rem;
+    font-size: 1.2rem;
+}

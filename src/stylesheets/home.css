@@ -1,6 +1,22 @@
+.homePage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3rem auto;
+    height: 80%;
+}
+
+.overlay {
+    opacity: 40%;
+}
+
 .home-img {
     height: auto;
     border: none;
+
+    z-index: inherit;
 }
 
 .home-img > div {
@@ -10,7 +26,7 @@
 .text-to-speech {
     display: grid;
     place-items: center;
-    height: 50%;
+    height: 70%;
     min-width: 30rem;
 }
 
@@ -23,7 +39,7 @@
 .transcript {
     width: 80%;
     
-    border: 1px solid blue;
+    border: 1px solid var(--clr-primary);
 
     border-radius: 2rem;
     
@@ -33,18 +49,16 @@
 
     overflow: hidden;
 
-    background-color: dodgerblue;
+    background-color: var(--clr-primary);
 
 }
 
 .transcript-text {
-    color: black;
+    color: var(--clr-quinary);
     min-height: 2.5rem;
     
     font-weight: 600;
     font-size: 1rem;
-
-    text-align: center;
     
     width: 85%;
     
@@ -53,7 +67,7 @@
     
     cursor: auto;
 
-    background-color: white;
+    background-color: var(--clr-quaternary) !important;
 
     margin: 0;
 
@@ -62,6 +76,7 @@
 
 .transcript-text::placeholder {
     font-weight: 500;
+    text-align: start;
 }
 
 .send-button {
@@ -74,34 +89,51 @@
     
     cursor: pointer;
     
-    background-color: dodgerblue;
+    background-color: inherit;
     color: white;
 }
 
+.send-button:hover > * {
+    transform: scale(1.2);
+}
+
 .reset-button {
-    color: rgba(0, 0, 0, 0.479);
+    color: rgb(175, 175, 175);
     text-decoration: underline;
     cursor: pointer;
     font-size: 2vh;
 }
 
 .reset-button:hover {
-    color: black;
+    color: var(--clr-quinary);
+}
+
+.mic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
 }
 
 .mic-icon {
     cursor: pointer;
     font-size: 5rem;
     
+    padding: 0.8rem;
+    
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
     /* TODO: backgroundGradient not working in mic icon */
-
+    
     /* background-color: aquamarine;
     background-clip: text;
     -webkit-background-clip: text; */
 }
 
 .mic-off:hover {
-    color: black;
+    color: var(--clr-quinary);
 }
 
 .mic-off {
@@ -110,6 +142,33 @@
 
 .mic-on {
     color: rgb(250, 100, 100);
+    box-shadow: rgb(255, 180, 180) 0px 0px 0px 1px;
+    
+    animation: pulsate infinite 2s;
+}
+
+@-webkit-keyframes pulsate {
+    50% {
+        transform: scale(.95);
+        box-shadow: rgb(255, 180, 180) 0px 0px 0px 10px, rgb(255, 140, 140) 0px 0px 0px 20px, rgb(255, 100, 100) 0px 0px 0px 30px, rgb(255, 60, 60) 0px 0px 0px 40px;
+    }
+}
+
+@keyframes pulsate {
+    50% {
+        transform: scale(.95);
+        box-shadow: rgb(255, 180, 180) 0px 0px 0px 10px, rgb(255, 140, 140) 0px 0px 0px 20px, rgb(255, 100, 100) 0px 0px 0px 30px, rgb(255, 60, 60) 0px 0px 0px 40px;
+    }
+}
+
+.mic-status {
+    font-size: 2vh;
+    text-align: center;
+    width: 100%;
+
+    margin: 3rem 0;
+
+    color: var(--clr-quinary);
 }
 
 @media only screen and (max-width: 420px) {

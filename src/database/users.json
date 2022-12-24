@@ -1,0 +1,24 @@
+[
+    {
+        "firstName": "Alan",
+        "lastName": "Rodrigues",
+        "username": "alanr149",
+        "emailId": "alanrodri149@example.com",
+        "phoneNo": 8732191096,
+        "dob": "14/09/1998",
+        "gender": "M",
+        "profession": "Doctor",
+        "userID": 1
+    },
+    {
+        "firstName": "Tristan",
+        "lastName": "Miller",
+        "username": "twistytrist",
+        "emailId": "notatate@example.com",
+        "phoneNo": 7017126042,
+        "dob": "04/10/1996",
+        "gender": "M",
+        "profession": "Engineer",
+        "userID": 2
+    }
+]

@@ -1,6 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@300;400&display=swap');
 /* @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'); */
 
+:root {
+    --clr-primary: rgb(30, 144, 255);
+    --clr-secondary: rgb(228, 51, 81);
+    --clr-trenary: rgb(212, 235, 129);
+    
+    /* Light Mode */
+    --clr-quaternary: white;
+    --clr-quinary: black;
+    --clr-shadow: rgba(14, 30, 37, 0.281);
+    
+    /* Dark Mode */
+    /* --clr-quaternary: black;
+    --clr-quinary: white;
+    --clr-shadow: rgba(147, 157, 161, 0.281); */
+
+}
+
+
 *,
 *::before,
 *::after {
@@ -14,8 +32,8 @@
 }
 
 *::selection {
-    background: rgb(212, 235, 129);
-    color: black;
+    background: var(--clr-trenary);
+    color: var(--clr-quinary);
 }
 
 
@@ -34,4 +52,6 @@ a {
     margin: auto;
     
     height: 100vh;
+
+    background-color: var(--clr-quaternary);
 }

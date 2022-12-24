@@ -1,11 +1,16 @@
-const Features = () => {
-    return (
-        <>
-            <h2>
-                Features
-            </h2>
-        </>
-    );
-}
+import './../../../stylesheets/features.css';
+import FeatureList from "../featureComponents/FeatureList";
 
-export default Features
+
+const Features = (props) => {
+    return (
+        <div
+            className={`featuresPage${props.panelActive ? ' overlay' : ''}`}
+            onClick={()=>props.isPanelActive(false)}
+        >
+            <FeatureList page="featurePage" />
+        </div>
+    );
+};
+
+export default Features;

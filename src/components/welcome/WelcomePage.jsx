@@ -2,28 +2,43 @@ import { useState } from 'react';
 
 import './../../stylesheets/welcomePage.css';
 
-import Login from './loginSignin/Login';
 import LoginSignup from './loginSignin/LoginSignup';
+import Login from './loginSignin/Login';
+import SignUp from './loginSignin/Signup';
 
-const WelcomePage = () => {
+import users from './../../database/users.json';
+import pass from './../../database/passwords.json';
+
+const WelcomePage = (props) => {
     const pageWidth = Math.floor(window.innerWidth);
-    // const pageWidth = 500;
-    const [page, setPage] = useState("home");
+    const [page, setPage] = useState('home');
+
+    function loginUser(checkUser) {
+        users.map(
+            (user, key) => {
+                if(user.username === checkUser.username && pass[key].password === checkUser.password) {
+                    props.getUser(user);
+                }
+                else {
+                }
+            }
+        );
+    }
 
     return (
         <>
             <div className='images'>
-                <div className="img">
+                <div className='img'>
                     <img src={`https://picsum.photos/${pageWidth}/220`} alt='sampleImg1' title='img1'/>
                 </div>
-                <div className="img">
+                <div className='img'>
                     <img src={`https://picsum.photos/${pageWidth}/221`} alt='sampleImg1' title='img2'/>
                 </div>
             </div>
             <div className='loginSignup'>
-                {page === "home" && <LoginSignup onPageChange={(newPage) => setPage(newPage)}/> }                
-                {page === "login" && <Login onPageChange={(newPage) => setPage(newPage)}/> }
-                {page === "signup" && <><h1>Signup page here</h1><button className='btn' onClick={() => setPage("home")}>go back</button></> }
+                {page === 'home' && <LoginSignup onPageChange={(newPage) => setPage(newPage)} /> }                
+                {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => loginUser(userInfo)}/> }
+                {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} /> }
             </div>
         </>
     )

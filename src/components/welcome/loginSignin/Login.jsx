@@ -2,10 +2,12 @@ import Carousel from "react-material-ui-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faKey, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Login = (props) => {
     const[passVisible, setPassVisible] = useState(false);
+    const[username, setUsername] = useState('');
+    const[password, setPassword] = useState('');
+
     const togglePass = () => {
         setPassVisible(!passVisible);
     }
@@ -27,6 +29,8 @@ const Login = (props) => {
                             autoFocus = {true}
                             className="input" 
                             placeholder="Username"
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
                         />
                     </div>
                 </div>
@@ -45,6 +49,8 @@ const Login = (props) => {
                             type={passVisible ? "text" : "password"}
                             className="input"
                             placeholder="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
                         />
                         <span
                             id='eye'
@@ -65,9 +71,7 @@ const Login = (props) => {
                     onClick={() => props.onPageChange("home")}
                     > go back</button>
                 <div className="center info">
-                    <Link to="/application">
-                        <button className="btn">Submit</button>
-                    </Link>
+                    <button onClick={()=>props.userUpdate({"username": username, "password": password})} className="btn-dark btn">Submit</button>
                 </div>
             </div>
         </Carousel>

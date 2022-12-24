@@ -1,26 +1,40 @@
 // import { useState } from "react";
 import { Route, Routes as Switch } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import WelcomePage from './components/welcome/WelcomePage';
-import ApplicationPage from './components/application/ApplicationPage';
 
 import './stylesheets/app.css';
 
+import { lazy, Suspense } from "react";
+
 const App = () => {
-    // const[users, setUsers] = useState(
-    //         [
-    //             {
-    //                 userName: "kushalv238",
-    //                 password: "abcd12345",
-    //                 userId: 1
-    //             }
-    //         ]
-    // );
+    const ApplicationPage = lazy(() => import("./components/application/ApplicationPage"));
+    const[user, setUser] = useState({"username": "kushal"});
+    
+    const goToApplication = (users) => {
+        setUser(users);
+        console.log(user);
+        
+        window.location.pathname = '/application';
+    }
 
     return (
         <Switch>
-            <Route exact path='/' element={<WelcomePage />} />
-            <Route exact path='/application' element={<ApplicationPage />} />
+            <Route
+                exact path='/'
+                element = {
+                    <WelcomePage getUser = {user => goToApplication(user)} />
+                }
+            />
+            <Route
+                exact path='/application'
+                element = {
+                    <Suspense fallback={<h3>Loading...</h3>}>
+                        <ApplicationPage user = {user}/>
+                    </Suspense>
+                }
+            />
         </Switch>
     )
 };

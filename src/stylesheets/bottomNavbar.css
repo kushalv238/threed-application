@@ -10,7 +10,7 @@
     border-radius: 2rem;
 
     color: white;
-    background-color: dodgerblue;
+    background-color: var(--clr-primary);
 }
 
 .nav-icons {
