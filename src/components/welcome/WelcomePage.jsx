@@ -12,17 +12,26 @@ import pass from './../../database/passwords.json';
 const WelcomePage = (props) => {
     const pageWidth = Math.floor(window.innerWidth);
     const [page, setPage] = useState('home');
+    const [loginInfoCorrect, setLoginInfoCorrect] = useState(true);
+    var userFound = false;
 
     function loginUser(checkUser) {
-        users.map(
+        users.map (
             (user, key) => {
                 if(user.username === checkUser.username && pass[key].password === checkUser.password) {
                     props.getUser(user);
+                    userFound = true;
+                    return undefined;
                 }
-                else {
-                }
+                return undefined;
             }
         );
+        if(!userFound) {
+            setLoginInfoCorrect(false);
+        }
+        else {
+            setLoginInfoCorrect(true);
+        }
     }
 
     return (
@@ -37,7 +46,7 @@ const WelcomePage = (props) => {
             </div>
             <div className='loginSignup'>
                 {page === 'home' && <LoginSignup onPageChange={(newPage) => setPage(newPage)} /> }                
-                {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => loginUser(userInfo)}/> }
+                {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => loginUser(userInfo)} loginInfoCorrect={loginInfoCorrect} /> }
                 {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} /> }
             </div>
         </>

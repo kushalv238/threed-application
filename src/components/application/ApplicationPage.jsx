@@ -11,10 +11,9 @@ import Search from './searchPage/Search';
 import Features from "./featuresPage/Features";
 import User from "./userPage/User";
 import Sidebar from "./sidebar/Sidebar";
-import Theme from "./applicationTheme/Theme";
 
 const ApplicationPage = (props) => {
-    const[page, setPage] = useState("home");
+    const[page, setPage] = useState(1);
     const[panelActive, setPanelActive] = useState(false);
     const user = {
         "firstName": "Alan",
@@ -31,11 +30,10 @@ const ApplicationPage = (props) => {
     return (
         <>
             <Sidebar panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)}/>
-            <Theme />
-            { page === "home" && <Home panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
-            { page === "search" && <Search panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
-            { page === "feat" && <Features panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
-            { page === "user" && <User user={user} panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
+            { page === 1 && <Home panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
+            { page === 2 && <Search panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
+            { page === 3 && <Features panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
+            { page === 4 && <User user={user} panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} /> }
             <BottomNavbar panelActive={panelActive} isPanelActive={(panelState) => setPanelActive(panelState)} onPageChange = {(newPage) => setPage(newPage)} page={page}/> {/* className: 'bottomNavBar' */}
         </>
     );

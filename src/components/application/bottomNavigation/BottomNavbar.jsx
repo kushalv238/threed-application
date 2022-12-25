@@ -1,14 +1,24 @@
 import './../../../stylesheets/bottomNavbar.css';
+
+import { useState } from 'react';
+
 import { faHome, faSearch, faUser, faTimeline } from '@fortawesome/free-solid-svg-icons';
 import NavigationIcon from './NavigationIcon';
 
 const BottomNavbar = (props) => {
+    const[prevPage, setPrevPage] = useState(1);
+
+    function handlePageChange (page) {
+        setPrevPage(props.page);
+        props.onPageChange(page);
+    }
+
     return (
         <div className={`bottomNavBar${props.panelActive ? ' overlay' : ''}`} onClick={()=>props.isPanelActive(false)}>
-            <NavigationIcon page={props.page} Page="home" title="Home" onPageChange = {props.onPageChange} icon={faHome}/>
-            <NavigationIcon page={props.page} Page="search" title="Search" onPageChange = {props.onPageChange} icon={faSearch}/>
-            <NavigationIcon page={props.page} Page="feat" title="Features" onPageChange = {props.onPageChange} icon={faTimeline}/>
-            <NavigationIcon page={props.page} Page="user" title="User" onPageChange = {props.onPageChange} icon={faUser}/>
+            <NavigationIcon prevPage = {prevPage} pageId={1} activePage={props.page} title="Home" onPageChange = {(page)=>handlePageChange(page)} icon={faHome} />
+            <NavigationIcon prevPage = {prevPage} pageId={2} activePage={props.page} title="Search" onPageChange = {(page)=>handlePageChange(page)} icon={faSearch} />
+            <NavigationIcon prevPage = {prevPage} pageId={3} activePage={props.page} title="Features" onPageChange = {(page)=>handlePageChange(page)} icon={faTimeline} />
+            <NavigationIcon prevPage = {prevPage} pageId={4} activePage={props.page} title="User" onPageChange = {(page)=>handlePageChange(page)} icon={faUser} />
         </div>
     );
 };

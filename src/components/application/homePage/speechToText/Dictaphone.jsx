@@ -70,10 +70,10 @@ const Dictaphone = (props) => {
                         onClick={() => {
                             SpeechRecognition.stopListening();
                             setMic(false);
-                            resetTranscript();
                             props.getMessage(transcript);
+                            resetTranscript();
                         }}
-                    >
+                        >
                         <FontAwesomeIcon
                             icon={faPaperPlane}
                         />
@@ -84,7 +84,7 @@ const Dictaphone = (props) => {
                         onClick={() => {
                             SpeechRecognition.stopListening();
                             setMic(false);
-                            resetTranscript()
+                            resetTranscript();
                         }}
                     >Clear</p>
                 </div>

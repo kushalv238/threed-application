@@ -4,12 +4,12 @@ const NavigationIcon = (props) => {
     return (
         <div className='nav-icons'>
             <div
-                className={props.page === props.Page ? `selected` : undefined}
-                onClick={() => props.onPageChange(props.Page)}
+                className={props.pageId === props.activePage ? `selected${props.prevPage > props.pageId ? ' moveLeft' : ''}${props.prevPage < props.pageId ? ' moveRight' : ''}` : undefined}
+                onClick={() => props.onPageChange(props.pageId)}
                 title={props.title}
             >
                 <FontAwesomeIcon icon={props.icon} />
-                {props.page === props.Page && <span>{props.title}</span>}                    
+                <p className={`hidden ${props.pageId === props.activePage && 'active'}`}>{props.title}</p>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +11,12 @@ const Search = (props) => {
         setUserSearch('');
         console.log(userSearch);
     }
+
+    useEffect(() => {
+        window.setTimeout(function () { 
+            // document.getElementById('search-bar').focus();
+        }, 0); 
+    }, [])
 
     return (
         <div
