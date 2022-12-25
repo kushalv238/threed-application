@@ -5,7 +5,7 @@
     align-items: center;
     width: 100%;
     margin: 3rem auto;
-    height: 70%;
+    height: 75%;
 }
 
 .overlay {
@@ -18,7 +18,7 @@
 
     z-index: inherit;
 
-    padding: 0;
+    padding: 4rem 0;
 }
 
 .home-img > div {
@@ -115,7 +115,7 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    padding: 3rem 0;
+    padding: 2rem 0;
 
     width: 100%;
 }
@@ -201,6 +201,18 @@
 @media only screen and (max-width: 420px) {
     .text-to-speech {
         height: 40%;
+        min-width: 90%;
+    }
+    .transcript {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .home-img {
+        padding: 0;
+    }
+    .text-to-speech {
+        height: 30%;
         min-width: 90%;
     }
     .transcript {

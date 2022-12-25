@@ -4,8 +4,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 3rem auto;
-    height: 70%;
+    margin: 4rem auto 3rem auto;
+    height: 75%;
 
     color: var(--clr-quinary);
 }
