@@ -104,6 +104,44 @@ img {
     height: 100% !important;
 }
 
+.passChecker {
+
+    max-width: 50%;
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+    margin: auto;
+    
+    gap: 0.5rem;
+}
+
+.checkingElements {
+    width: 45%;
+    height: auto !important;
+
+    font-size: 0.7rem;
+}
+
+.incorrect-input {
+    color: var(--clr-secondary);
+}
+
+.bottom {
+    display: flex;
+    align-items: flex-start;
+
+    padding-top: 1.5rem;
+}
+
+.top {
+    display: flex;
+    align-items: flex-end;
+    
+    /* padding-bottom: 1.5rem; */
+}
+
 .submit {
     padding: 4rem 0;
 }
@@ -133,6 +171,8 @@ input {
     border-bottom: 1px solid var(--clr-quaternary);
 
     margin: 0 8px;
+
+    color-scheme: var(--clr-scheme);
 }
 
 input::placeholder {

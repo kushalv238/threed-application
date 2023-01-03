@@ -16,9 +16,20 @@
         "username": "twistytrist",
         "emailId": "notatate@example.com",
         "phoneNo": 7017126042,
-        "dob": "04/10/1996",
+        "dob": "02/10/1996",
         "gender": "M",
         "profession": "Engineer",
         "userID": 2
+    },
+    {
+        "firstName": "Raven",
+        "lastName": "Owens",
+        "username": "owensRaven347",
+        "emailId": "ravenaowens@example.com",
+        "phoneNo": 9327572219,
+        "dob": "27/3/1999",
+        "gender": "O",
+        "profession": "Artist",
+        "userID": 3
     }
 ]

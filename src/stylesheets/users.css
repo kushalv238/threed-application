@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 4rem auto 3rem auto;
+    margin: 4rem auto 2rem auto;
     height: 75%;
 
     color: var(--clr-quinary);
@@ -30,7 +30,7 @@
     border-bottom: 1px solid var(--clr-quinary);
 }
 
-@media only screen and (max-height: 800px) {
+@media only screen and (max-height: 810px) {
     .usersPage {
         justify-content: space-around;
         align-items: flex-end;

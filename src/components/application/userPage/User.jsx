@@ -1,10 +1,13 @@
 import './../../../stylesheets/users.css';
 
-import { Link } from 'react-router-dom';
-
 import UserInfo from './UserInfo';
 
 const User = (props) => {
+    function getGender () {
+        if(props.user.gender === 'M') return "Male"
+        else if(props.user.gender === 'F') return "Female"
+        else return "Others"
+    }
     return (
         <div
             className={`usersPage${props.panelActive ? ' overlay' : ''}`}
@@ -17,11 +20,9 @@ const User = (props) => {
             <UserInfo infoName="Email" info={props.user.emailId}/>
             <UserInfo infoName="Phone No." info={props.user.phoneNo}/>
             <UserInfo infoName="Date of Birth" info={props.user.dob}/>
-            <UserInfo infoName="Gender" info={props.user.gender === 'M' ? 'Male' : 'Female'}/>
+            <UserInfo infoName="Gender" info={getGender()} />
             <div className="logoutButton">
-                <Link to='/'>
-                        <button className='btn'>Log out</button>
-                </Link>
+                <button onClick={() => window.location.pathname = '/'} className='btn'>Log out</button>
             </div>
         </div>
     );

@@ -1,33 +1,56 @@
 // import { useState } from "react";
-import { Route, Routes as Switch } from "react-router-dom";
-import { useState } from "react";
+import { Link, Route, Routes as Switch } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
 import WelcomePage from './components/welcome/WelcomePage';
 
 import './stylesheets/app.css';
 
 import { lazy, Suspense } from "react";
-import Theme from "./components/applicationTheme/Theme";
+import Theme from "./components/theme/Theme";
 
 const App = () => {
     const ApplicationPage = lazy(() => import("./components/application/ApplicationPage"));
-    const[user, setUser] = useState({"username": "kushal"});
+    const[user, setUser] = useState();
     
     const goToApplication = (users) => {
-        setUser(users);
-        console.log(users);
-        
-        window.location.pathname = '/application';
+        setUser(users);   
     }
+    
+    var didMount = useRef(0);
+    
+    useEffect(() => {
+        if(didMount.current === 2) {
+            document.getElementById('routing-button').click();
+        }
+        else {
+            didMount.current++;
+        }
+    }, [user])
 
     return (
         <>
+
             <Theme />
+
             <Switch>
                 <Route
                     exact path='/'
                     element = {
-                        <WelcomePage getUser = {user => goToApplication(user)} />
+                        <>
+                            <WelcomePage getUser = {user => goToApplication(user)} />
+                            <Link
+                                to = {
+                                        {
+                                            pathname: '/application',
+                                            state: {user : {user}}
+                                        }
+                                    }
+                                    className="hidden"
+                            >
+                                <button id="routing-button" />
+                            </Link>
+                        </>
                     }
                 />
                 <Route
@@ -39,6 +62,8 @@ const App = () => {
                     }
                 />
             </Switch>
+
+
         </>
     )
 };

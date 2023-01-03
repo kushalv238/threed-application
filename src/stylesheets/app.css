@@ -7,9 +7,9 @@
     --clr-trenary: rgb(212, 235, 129);
     
     /* Light Mode */
-    --clr-quaternary: white;
+    /* --clr-quaternary: white;
     --clr-quinary: black;
-    --clr-shadow: rgba(14, 30, 37, 0.281);
+    --clr-shadow: rgba(14, 30, 37, 0.281); */
     
     /* Dark Mode */
     /* --clr-quaternary: black;
@@ -54,4 +54,10 @@ a {
     height: 100vh;
 
     background-color: var(--clr-quaternary);
+}
+
+.hidden > * {
+    display: none;
+    width: 0;
+    height: 0;
 }

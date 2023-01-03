@@ -1,7 +1,7 @@
 import Carousel from "react-material-ui-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faKey, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Login = (props) => {
     const[passVisible, setPassVisible] = useState(false);
@@ -29,6 +29,7 @@ const Login = (props) => {
         <Carousel
             autoPlay={false}
             onChange={handleChange}
+            index={0}
         >
             <div className="inputs">
                 <button

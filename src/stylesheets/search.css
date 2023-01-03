@@ -2,21 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-items: center;
 
-    position: fixed;
-    top: 0;
     width: 100%;
-    margin: 0 auto;
+    margin: 3rem auto;
     height: 75%;
 }
 
 .search {
     max-width: 25rem;
-
+    
     display: flex;
     align-self: flex-start;
     
-
+    position: fixed;
+    top: 0;
+    
     padding: 0.4rem 1rem;
     margin: 0.5rem;
     

@@ -19,6 +19,14 @@ const Dictaphone = (props) => {
         setMic(!mic);
     }
 
+    const shutMic = () => {
+        SpeechRecognition.stopListening();
+        setMic(false);
+        window.setTimeout( () => {
+            resetTranscript();
+        }, 300);
+    }
+
     const[message, setMessage] = useState('');
 
     if (!browserSupportsSpeechRecognition) {
@@ -68,10 +76,8 @@ const Dictaphone = (props) => {
                         className="send-button"
                         title='Send'
                         onClick={() => {
-                            SpeechRecognition.stopListening();
-                            setMic(false);
+                            shutMic();
                             props.getMessage(transcript);
-                            resetTranscript();
                         }}
                         >
                         <FontAwesomeIcon
@@ -81,11 +87,7 @@ const Dictaphone = (props) => {
                 </div>
                 <div className='reset-button'>
                     <p
-                        onClick={() => {
-                            SpeechRecognition.stopListening();
-                            setMic(false);
-                            resetTranscript();
-                        }}
+                        onClick={shutMic}
                     >Clear</p>
                 </div>
             </div>

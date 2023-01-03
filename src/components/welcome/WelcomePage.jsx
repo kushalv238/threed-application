@@ -1,3 +1,8 @@
+/*
+    Location: '/'
+*/
+
+
 import { useState } from 'react';
 
 import './../../stylesheets/welcomePage.css';
@@ -47,7 +52,7 @@ const WelcomePage = (props) => {
             <div className='loginSignup'>
                 {page === 'home' && <LoginSignup onPageChange={(newPage) => setPage(newPage)} /> }                
                 {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => loginUser(userInfo)} loginInfoCorrect={loginInfoCorrect} /> }
-                {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} /> }
+                {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => props.getUser(userInfo)} loginInfoCorrect={loginInfoCorrect} /> }
             </div>
         </>
     )

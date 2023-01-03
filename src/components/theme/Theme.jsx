@@ -14,20 +14,21 @@ const Theme = () => {
                 document.querySelector(":root").style.setProperty('--clr-quaternary', 'black');
                 document.querySelector(":root").style.setProperty('--clr-quinary', 'white');
                 document.querySelector(":root").style.setProperty('--clr-shadow', 'rgba(147, 157, 161, 0.281)');
+                document.querySelector(":root").style.setProperty('--clr-scheme', 'light');
             }
             else {
                 //lighttheme
                 document.querySelector(":root").style.setProperty('--clr-quaternary', 'white');
                 document.querySelector(":root").style.setProperty('--clr-quinary', 'black');
                 document.querySelector(":root").style.setProperty('--clr-shadow', 'rgba(14, 30, 37, 0.281)');
+                document.querySelector(":root").style.setProperty('--clr-scheme', 'dark');
 
             }
         }, [lightTheme]
     )
-    
 
     return (
-        <div className={`theme ${!lightTheme && 'toRight'}`} onClick={() => toggleTheme(prevTheme => !prevTheme)} title='Toggle Theme' >
+        <div className={`theme${!lightTheme ? ' toRight' : ''}`} onClick={() => toggleTheme(prevTheme => !prevTheme)} title='Toggle Theme' >
             <div className="themeValue">
                 <FontAwesomeIcon icon={lightTheme ? faSun : faMoon} />
             </div>
