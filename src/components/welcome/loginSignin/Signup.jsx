@@ -416,10 +416,8 @@ const SignUp = (props) => {
                                 )
                             }
                         }}
-                        // onClick={()=>props.userUpdate({"username": username, "password": password})}
                         className="btn-dark btn"
                     >Submit</button>
-                    {!props.loginInfoCorrect && <p className="wrongInfo">Incorrect userame or password! Try again.</p>}
                 </div>
             </div>
         </Carousel>
