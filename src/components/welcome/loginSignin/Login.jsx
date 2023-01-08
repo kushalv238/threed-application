@@ -96,7 +96,7 @@ const Login = (props) => {
                         checked={rememberMe}
                         onChange={() => setRememberMe(oldValue => !oldValue)}
                         />
-                        <label for="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
+                        <label htmlFor="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
                             Remember me
                         </label>
                     </div>

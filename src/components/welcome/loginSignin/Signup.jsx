@@ -325,7 +325,7 @@ const SignUp = (props) => {
                                 value={gender}
                                 onChange={() => setGender('M')}
                                 />
-                                <label for="male">
+                                <label htmlFor="male">
                                     Male
                                 </label>
                             <input
@@ -336,7 +336,7 @@ const SignUp = (props) => {
                                 value={gender}
                                 onChange={() => setGender('F')}
                                 />
-                                <label for="female">
+                                <label htmlFor="female">
                                     Female
                                 </label>
                             <input
@@ -347,7 +347,7 @@ const SignUp = (props) => {
                                 value={gender}
                                 onChange={() => setGender('O')}
                                 />
-                                <label for="others">
+                                <label htmlFor="others">
                                     Other
                                 </label>
                         </form>
@@ -431,7 +431,7 @@ const SignUp = (props) => {
                             checked={TandCChecked}
                             onChange={() => setTandCChecked(oldValue => !oldValue)}
                             />
-                            <label for="tAndCCheckbox">
+                            <label htmlFor="tAndCCheckbox">
                                 <a href="/tandc" className="infoCircle" target="_blank">
                                     Accept T & C
                                 </a>
@@ -465,7 +465,7 @@ const SignUp = (props) => {
                         checked={rememberMe}
                         onChange={() => setRememberMe(oldValue => !oldValue)}
                         />
-                        <label for="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
+                        <label htmlFor="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
                             Remember me
                         </label>
                     </div>
