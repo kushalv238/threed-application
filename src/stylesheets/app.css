@@ -32,8 +32,8 @@
 }
 
 *::selection {
-    background: var(--clr-trenary);
-    color: var(--clr-quinary);
+    background: var(--clr-quinary);
+    color: var(--clr-quaternary);
 }
 
 

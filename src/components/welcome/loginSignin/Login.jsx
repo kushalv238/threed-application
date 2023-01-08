@@ -1,12 +1,13 @@
 import Carousel from "react-material-ui-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faKey, faEye, faEyeSlash, faArrowLeft, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const Login = (props) => {
     const[passVisible, setPassVisible] = useState(false);
     const[username, setUsername] = useState('');
     const[password, setPassword] = useState('');
+    const[rememberMe, setRememberMe] = useState(false);
     
     const togglePass = () => {
         setPassVisible(!passVisible);
@@ -35,7 +36,7 @@ const Login = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faUser} color="white" />
@@ -55,7 +56,7 @@ const Login = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faKey} color="white" />
@@ -85,9 +86,20 @@ const Login = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                    > go back</button>
+                    > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info submit">
-                    <button onClick={()=>props.userUpdate({"username": username, "password": password})} className="btn-dark btn">Submit</button>
+                    <button onClick={()=>props.userUpdate({"username": username, "password": password}, rememberMe)} className="btn-dark btn">Log in</button>
+                    <div>
+                        <input 
+                        type="checkbox"
+                        id="rememberUserCheckbox"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe(oldValue => !oldValue)}
+                        />
+                        <label for="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
+                            Remember me
+                        </label>
+                    </div>
                     {!props.loginInfoCorrect && <p className="wrongInfo">Incorrect userame or password! Try again.</p>}
                 </div>
             </div>

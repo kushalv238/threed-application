@@ -1,4 +1,8 @@
-// import { useState } from "react";
+/*
+    Location: '/'
+*/
+
+
 import { Link, Route, Routes as Switch } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
@@ -8,6 +12,7 @@ import './stylesheets/app.css';
 
 import { lazy, Suspense } from "react";
 import Theme from "./components/theme/Theme";
+import TandC from "./components/terms and condition/TandC";
 
 const App = () => {
     const ApplicationPage = lazy(() => import("./components/application/ApplicationPage"));
@@ -16,7 +21,7 @@ const App = () => {
     const goToApplication = (users) => {
         setUser(users);   
     }
-    
+
     var didMount = useRef(0);
     
     useEffect(() => {
@@ -30,7 +35,6 @@ const App = () => {
 
     return (
         <>
-
             <Theme />
 
             <Switch>
@@ -38,7 +42,6 @@ const App = () => {
                     exact path='/'
                     element = {
                         <>
-                            <WelcomePage getUser = {user => goToApplication(user)} />
                             <Link
                                 to = {
                                         {
@@ -50,6 +53,7 @@ const App = () => {
                             >
                                 <button id="routing-button" />
                             </Link>
+                            <WelcomePage getUser = {user => goToApplication(user)} />
                         </>
                     }
                 />
@@ -61,9 +65,14 @@ const App = () => {
                         </Suspense>
                     }
                 />
+
+                <Route
+                    exact path = '/tandc'
+                    element = {
+                        <TandC />
+                    }
+                />
             </Switch>
-
-
         </>
     )
 };

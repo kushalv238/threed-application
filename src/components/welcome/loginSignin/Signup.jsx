@@ -1,7 +1,8 @@
 import Carousel from "react-material-ui-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faEye, faEyeSlash, faIdCard, faAt, faPhone, faBirthdayCake, faSuitcase, faCheck, faX } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faKey, faEye, faEyeSlash, faIdCard, faAt, faBirthdayCake, faSuitcase, faCheck, faX, faArrowLeft, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState, useRef } from "react";
+import PhoneInput from "react-phone-number-input";
 
 const SignUp = (props) => {
     const[passVisible, setPassVisible] = useState(false);
@@ -14,6 +15,8 @@ const SignUp = (props) => {
     const[profession, setProfession] = useState('');
     const[password, setPassword] = useState('');
     const[gender, setGender] = useState('');
+    const[rememberMe, setRememberMe] = useState(false);
+    const[TandCChecked, setTandCChecked] = useState(false);
     
     const[carouselId, setCarouselId] = useState(0);
     
@@ -22,12 +25,13 @@ const SignUp = (props) => {
     const didMount =  useRef(0);
     useEffect(() => {
         if(didMount.current >= 2) {
-            props.userUpdate(user);
+            props.userUpdate(user, rememberMe);
         }
         
         else {
             didMount.current ++;
         }
+        // eslint-disable-next-line
     }, [user, props]);
 
     function focus(focusId) {
@@ -36,10 +40,6 @@ const SignUp = (props) => {
 
         input.setSelectionRange(end, end);
         input.focus();
-    }
-
-    function isDigit(c) {
-        return (c.match(/^[0-9]+$/));
     }
     function containsUpper(str) {
         return /[A-Z]/.test(str);
@@ -56,8 +56,16 @@ const SignUp = (props) => {
     function containsMin8Char(str) {
         return str.length >= 8;
     }
+    function contains13Char(str) {
+        return str.length === 13;
+    }
+    function verifyEmail(str) {
+        const res = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return res.test(String(str).toLowerCase());
+    }
 
     function loginuser() {
+        console.log(phoneNo)
         if(firstname === '') {
             alert("Enter firstname");
             
@@ -80,7 +88,7 @@ const SignUp = (props) => {
 
             return false;
         }
-        if(email === '') {
+        if(email === '' || !verifyEmail(email)) {
             alert("Invalid Email ID");
             
             setCarouselId(3);
@@ -91,7 +99,7 @@ const SignUp = (props) => {
 
             return false;
         }
-        if(!isDigit(phoneNo) || phoneNo === '') {
+        if(phoneNo === '' || (phoneNo[0] === "+" && phoneNo[1] === "9" && phoneNo[2] === "1" && !contains13Char(phoneNo))) {
             alert("Incorrect phone no pattern");
             
             setCarouselId(4);
@@ -117,6 +125,11 @@ const SignUp = (props) => {
 
             return false
         }
+        if(!TandCChecked) {
+            alert("Check T & C to continue.");
+            return false;
+        }
+
         return true;
     }
 
@@ -171,7 +184,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box top">
                         <FontAwesomeIcon icon={faIdCard} color="white" />
@@ -202,7 +215,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faSuitcase} color="white" />
@@ -221,7 +234,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faUser} color="white" />
@@ -240,7 +253,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faAt} color="white" />
@@ -260,19 +273,17 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
-                        <FontAwesomeIcon icon={faPhone} color="white" />
-                        <input
-                            autoComplete="on"                        
+                        <PhoneInput
+                            placeholder="Enter phone number"
+                            value={phoneNo}
                             id="phoneNoInput"
                             className="input"
                             type="tel"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                            placeholder="Phone Number"
-                            value={phoneNo}
-                            onChange={(event) => setPhoneNo(event.target.value)}
+                            name="phone"
+                            onChange={setPhoneNo}
                         />
                     </div>
                 </div>
@@ -281,7 +292,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faBirthdayCake} color="white" />
@@ -301,7 +312,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box">
                         <FontAwesomeIcon icon={faUser} color="white" />
@@ -309,27 +320,36 @@ const SignUp = (props) => {
                             <input
                                 className="input"
                                 type="radio"
+                                id="male"
                                 checked={gender === 'M'}
                                 value={gender}
                                 onChange={() => setGender('M')}
                                 />
-                            Male
+                                <label for="male">
+                                    Male
+                                </label>
                             <input
                                 className="input"
                                 type="radio"
+                                id="female"
                                 checked={gender === 'F'}
                                 value={gender}
                                 onChange={() => setGender('F')}
                                 />
-                            Female
+                                <label for="female">
+                                    Female
+                                </label>
                             <input
                                 className="input"
                                 type="radio"
+                                id="others"
                                 checked={gender === 'O'}
                                 value={gender}
                                 onChange={() => setGender('O')}
                                 />
-                            Other
+                                <label for="others">
+                                    Other
+                                </label>
                         </form>
                     </div>
                 </div>
@@ -338,7 +358,7 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                > go back </button>
+                > <FontAwesomeIcon icon={faArrowLeft} /> </button>
                 <div className="center info">
                     <div className="center input-box top">
                         <FontAwesomeIcon icon={faKey} color="white" />
@@ -397,8 +417,25 @@ const SignUp = (props) => {
                 <button
                     className="btn"
                     onClick={() => props.onPageChange("home")}
-                    > go back</button>
+                    > <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
                 <div className="center info submit">
+                <div className="TandC">
+                    <a href="/tandc" target="_blank">
+                        <FontAwesomeIcon className="infoCircle" icon={faInfoCircle} color={`${!TandCChecked && 'rgb(252, 107, 107)'}`} />
+                    </a>
+                    <div className="TandC-checkbox">
+                            <input 
+                            type="checkbox"
+                            id="tAndCCheckbox"
+                            checked={TandCChecked}
+                            onChange={() => setTandCChecked(oldValue => !oldValue)}
+                            />
+                            <label for="tAndCCheckbox">
+                                Accept T & C
+                            </label>
+                    </div>
+                </div>
                     <button
                         onClick={()=> {
                             if(loginuser()) {
@@ -417,7 +454,19 @@ const SignUp = (props) => {
                             }
                         }}
                         className="btn-dark btn"
-                    >Submit</button>
+                    >Sign Up
+                    </button>
+                    <div>
+                        <input 
+                        type="checkbox"
+                        id="rememberUserCheckbox"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe(oldValue => !oldValue)}
+                        />
+                        <label for="rememberUserCheckbox" style={ {color:"var(--clr-quaternary)"} }>
+                            Remember me
+                        </label>
+                    </div>
                 </div>
             </div>
         </Carousel>

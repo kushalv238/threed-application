@@ -3,7 +3,7 @@
 */
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './../../stylesheets/welcomePage.css';
 
@@ -18,25 +18,53 @@ const WelcomePage = (props) => {
     const pageWidth = Math.floor(window.innerWidth);
     const [page, setPage] = useState('home');
     const [loginInfoCorrect, setLoginInfoCorrect] = useState(true);
+    var User;
     var userFound = false;
 
-    function loginUser(checkUser) {
+    
+    useEffect(() => {
+        if(document.cookie.length !== 0 ) {
+            var result = document.cookie.match(new RegExp('userInfo=([^;]+)'));
+                result && (result = JSON.parse(result[1]));
+    
+            if(result !== undefined && result !== null) {
+                window.location.pathname='/application';
+                return;
+            }
+        }
+    }, [])
+
+    function loginUser(checkUser, rememberStatus) {
         users.map (
             (user, key) => {
                 if(user.username === checkUser.username && pass[key].password === checkUser.password) {
-                    props.getUser(user);
+                    User = user;
                     userFound = true;
                     return undefined;
                 }
                 return undefined;
             }
         );
+
         if(!userFound) {
             setLoginInfoCorrect(false);
         }
         else {
-            setLoginInfoCorrect(true);
+            rememberStatus ?
+            saveUser(User) :
+            props.getUser(User);
         }
+    }
+    
+    function saveUser(userInfo) {
+        const today = new Date();
+        var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    
+        document.cookie = `userInfo=${JSON.stringify(userInfo)}; expires=${days[today.getDay()]}, ${today.getDate()+7} ${today.getMonth()} ${today.getFullYear()} 12:00:00 UTC; path=/`;
+        document.cookie = `userInfo=${JSON.stringify(userInfo)}; expires=${days[today.getDay()]}, ${today.getDate()+7} ${today.getMonth()} ${today.getFullYear()} 12:00:00 UTC; path=/application`;
+        
+        setLoginInfoCorrect(true);
+        props.getUser(userInfo);
     }
 
     return (
@@ -51,8 +79,8 @@ const WelcomePage = (props) => {
             </div>
             <div className='loginSignup'>
                 {page === 'home' && <LoginSignup onPageChange={(newPage) => setPage(newPage)} /> }                
-                {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => loginUser(userInfo)} loginInfoCorrect={loginInfoCorrect} /> }
-                {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo) => props.getUser(userInfo)} loginInfoCorrect={loginInfoCorrect} /> }
+                {page === 'login' && <Login onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo, rememberStatus) => loginUser(userInfo, rememberStatus)} loginInfoCorrect={loginInfoCorrect} /> }
+                {page === 'signup' && <SignUp onPageChange={(newPage) => setPage(newPage)} userUpdate={(userInfo, rememberStatus) => rememberStatus ? saveUser(userInfo) : props.getUser(userInfo) } loginInfoCorrect={loginInfoCorrect} /> }
             </div>
         </>
     )

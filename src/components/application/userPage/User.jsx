@@ -6,7 +6,8 @@ const User = (props) => {
     function getGender () {
         if(props.user.gender === 'M') return "Male"
         else if(props.user.gender === 'F') return "Female"
-        else return "Others"
+        else if(props.user.gender === 'O') return "Others"
+        else if(props.user.gender === '') return ''
     }
     return (
         <div
@@ -22,7 +23,7 @@ const User = (props) => {
             <UserInfo infoName="Date of Birth" info={props.user.dob}/>
             <UserInfo infoName="Gender" info={getGender()} />
             <div className="logoutButton">
-                <button onClick={() => window.location.pathname = '/'} className='btn'>Log out</button>
+                <button onClick={() => {document.cookie = 'userInfo= ; expires=; path=/'; document.cookie = 'userInfo=; expires=; path=/application'; window.location.pathname = '/';}} className='btn'>Log out</button>
             </div>
         </div>
     );

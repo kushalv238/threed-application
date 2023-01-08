@@ -135,11 +135,32 @@ img {
     padding-top: 1.5rem;
 }
 
+.TandC {
+    width: 60%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    color: var(--clr-quaternary);
+}
+
+.infoCircle:hover {
+    color: var(--clr-primary) !important;
+}
+
+.TandC:hover .TandC-checkbox {
+    display: block;
+}
+
+.TandC-checkbox {
+    display: none;
+    color: var(--clr-quaternary);
+}
+
 .top {
     display: flex;
     align-items: flex-end;
-    
-    /* padding-bottom: 1.5rem; */
 }
 
 .submit {
@@ -151,8 +172,8 @@ img {
 }
 
 .input-box {
-    /* margin: 0.5rem auto; */
     display: flex;
+    justify-content: center;
     color: var(--clr-quaternary);
 }
 
@@ -173,6 +194,37 @@ input {
     margin: 0 8px;
 
     color-scheme: var(--clr-scheme);
+}
+
+.PhoneInput {
+    height: 50% !important;
+    width: 80%;
+
+    display: grid;
+    place-items: center;
+}
+
+.PhoneInputCountryIcon {
+    width: 20%;
+    height: auto !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PhoneInputCountryIconImg {
+    width: 2.5rem;
+}
+
+.PhoneInputCountrySelect {
+    width: 70%;
+}
+.PhoneInputCountry {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 input::placeholder {
@@ -204,5 +256,8 @@ input::placeholder {
 @media only screen and (max-width: 380px) {
     .css-1m9128y {
         margin-top: 1.3rem !important;
+    }
+    .PhoneInput {
+        width: 60%;
     }
 }
