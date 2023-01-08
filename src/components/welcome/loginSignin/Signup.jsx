@@ -432,7 +432,9 @@ const SignUp = (props) => {
                             onChange={() => setTandCChecked(oldValue => !oldValue)}
                             />
                             <label for="tAndCCheckbox">
-                                Accept T & C
+                                <a href="/tandc" className="infoCircle" target="_blank">
+                                    Accept T & C
+                                </a>
                             </label>
                     </div>
                 </div>

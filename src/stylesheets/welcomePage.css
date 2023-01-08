@@ -147,6 +147,7 @@ img {
 
 .infoCircle:hover {
     color: var(--clr-primary) !important;
+    text-decoration: underline;
 }
 
 .TandC:hover .TandC-checkbox {
