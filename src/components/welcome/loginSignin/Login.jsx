@@ -1,6 +1,6 @@
 import Carousel from "react-material-ui-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faEye, faEyeSlash, faArrowLeft, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faKey, faEye, faEyeSlash, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const Login = (props) => {
