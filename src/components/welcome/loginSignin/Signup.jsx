@@ -65,7 +65,6 @@ const SignUp = (props) => {
     }
 
     function loginuser() {
-        console.log(phoneNo)
         if(firstname === '') {
             alert("Enter firstname");
             
@@ -430,7 +429,7 @@ const SignUp = (props) => {
                             id="tAndCCheckbox"
                             checked={TandCChecked}
                             onChange={() => setTandCChecked(oldValue => !oldValue)}
-                            />
+                            />  
                             <label htmlFor="tAndCCheckbox">
                                 <a href="/tandc" className="infoCircle" target="_blank">
                                     Accept T & C
